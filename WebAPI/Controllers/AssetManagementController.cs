@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebAPI.BusinessLayer;
 using WebAPI.Model;
+using WebAPI.Service;
 
 namespace WebAPI.Controllers
 {
@@ -8,16 +10,49 @@ namespace WebAPI.Controllers
     [ApiController]
     public class AssetManagementController : ControllerBase
     {
-        public static List<Asset_Model> assets = new List<Asset_Model>{
-                new Asset_Model { AssetId = 1, Name = "Laptop", Description = "Dell XPS 13", EmployeeId = 101, CreatedDate = DateTime.Now,UpdatedBy = new User { EmployeeId = 101, Name = "John Doe" }, isDamaged = true,isRepaired = false, isAssigned = true },
-                new Asset_Model { AssetId = 2, Name = "Monitor", Description = "LG UltraWide", EmployeeId = 102, CreatedDate = DateTime.Now, UpdatedBy = new User { EmployeeId = 102, Name = "Jane Smith" }, isDamaged= false, isRepaired = true, isAssigned = false }
-            };
-
+        private readonly IAssetManagementService _assetService;
+        public AssetManagementController(IAssetManagementService AssetsService)
+        {
+            _assetService = AssetsService;
+        }
         /// <summary>
         /// Get all assets
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ActionResult<List<Asset_Model>>> GetAllAssets() => await Task.FromResult(Ok(assets));
+        public async Task<ActionResult<List<Asset_Model>>> GetAllAssets()
+        {
+            try
+            {
+                return await _assetService.GetAllAssetsAsync();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Error retrieving data from the database: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Get asset by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Asset_Model>> GetAssetByIdAsync(int id)
+        {
+            try
+            {
+                var asset = await _assetService.GetAssetByIdAsync(id);
+                if (asset == null)
+                {
+                    return NotFound($"No such Asset found. Please try finding another Asset or contact admin");
+                }
+                return asset;
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Error retrieving data from the database: {ex.Message}");
+            }
+        }
     }
 }

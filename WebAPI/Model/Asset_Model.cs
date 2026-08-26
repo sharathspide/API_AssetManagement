@@ -2,7 +2,7 @@
 {
     public class Asset_Model
     {
-        public object? AssetId { get; set; }
+        public int AssetId { get; set; }
         public string? Name { get; set; }
         public string? Description { get; set; }
         public object? EmployeeId { get; set; }
@@ -16,7 +16,7 @@
     }
     public class User 
     {
-        public object? EmployeeId { get; set; }
+        public int EmployeeId { get; set; }
         public string? Name { get; set; }
 
     }
