@@ -51,7 +51,7 @@ namespace WebAPI.Controllers
                 var asset = await _assetService.GetAssetByIdAsync(id);
                 if (asset == null)
                 {
-                    return NotFound($"No such Asset found. Please try finding another Asset or contact admin");
+                    return NotFound($"No Assets were found. Please try finding another Asset or contact admin");
                 }
                 return asset;
             }
