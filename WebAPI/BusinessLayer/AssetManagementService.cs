@@ -9,10 +9,10 @@ namespace WebAPI.BusinessLayer
         /// Mock data for assets
         /// </summary>
         public static List<Asset_Model> assets = new List<Asset_Model>{
-                new Asset_Model { AssetId = 1, Name = "Laptop", Description = "Dell XPS 13", EmployeeId = 101, CreatedDate = DateTime.Now,UpdatedBy = new User { EmployeeId = 101, Name = "John Doe" }, isDamaged = true,isRepaired = false, isAssigned = true },
-                new Asset_Model { AssetId = 2, Name = "Monitor", Description = "LG UltraWide", EmployeeId = 102, CreatedDate = DateTime.Now, UpdatedBy = new User { EmployeeId = 102, Name = "Jane Smith" }, isDamaged= false, isRepaired = true, isAssigned = true },
-                new Asset_Model { AssetId = 3, Name = "Monitor", Description = "LG UltraWide", EmployeeId = 103, CreatedDate = DateTime.Now, UpdatedBy = new User { EmployeeId = 103, Name = "Peter Parker" }, isDamaged= false, isRepaired = true, isAssigned = true },
-                new Asset_Model { AssetId = 4, Name = "Mouse", Description = "Zebronics", EmployeeId = 102, CreatedDate = DateTime.Now, UpdatedBy = new User { EmployeeId = 102, Name = "Jane Smith" }, isDamaged= false, isRepaired = true, isAssigned = true }
+                new Asset_Model { AssetId = 1, Name = "Laptop", Description = "Dell XPS 13", EmployeeId = 101, CreatedDate = DateTime.Now,UpdatedBy = new Employee { EmployeeId = 101, Name = "John Doe" }, isDamaged = true,isRepaired = false, isAssigned = true },
+                new Asset_Model { AssetId = 2, Name = "Monitor", Description = "LG UltraWide", EmployeeId = 102, CreatedDate = DateTime.Now, UpdatedBy = new Employee { EmployeeId = 102, Name = "Jane Smith" }, isDamaged= false, isRepaired = true, isAssigned = true },
+                new Asset_Model { AssetId = 3, Name = "Monitor", Description = "LG UltraWide", EmployeeId = 103, CreatedDate = DateTime.Now, UpdatedBy = new Employee { EmployeeId = 103, Name = "Peter Parker" }, isDamaged= false, isRepaired = true, isAssigned = true },
+                new Asset_Model { AssetId = 4, Name = "Mouse", Description = "Zebronics", EmployeeId = 102, CreatedDate = DateTime.Now, UpdatedBy = new Employee { EmployeeId = 102, Name = "Jane Smith" }, isDamaged= false, isRepaired = true, isAssigned = true }
             };
 
 

@@ -11,10 +11,16 @@ namespace WebAPI.Controllers
     public class AssetManagementController : ControllerBase
     {
         private readonly IAssetManagementService _assetService;
+
+        /// <summary>
+        /// constructor for the controller
+        /// </summary>
+        /// <param name="AssetsService"></param>
         public AssetManagementController(IAssetManagementService AssetsService)
         {
             _assetService = AssetsService;
         }
+
         /// <summary>
         /// Get all assets
         /// </summary>
