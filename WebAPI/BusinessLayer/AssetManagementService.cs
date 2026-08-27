@@ -16,7 +16,7 @@ namespace WebAPI.BusinessLayer
             };
 
 
-        public Task<Asset_Model> AddAssetAsync(Asset_Model asset)
+        public Task<Asset_Model> CreateAssetAsync(Asset_Model asset)
         {
             throw new NotImplementedException();
         }
