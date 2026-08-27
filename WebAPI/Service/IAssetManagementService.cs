@@ -16,7 +16,7 @@ namespace WebAPI.Service
         /// <param name="asset_id"></param>
         /// <returns></returns>
         Task<Asset_Model?> GetAssetByIdAsync(int asset_id);
-        Task<Asset_Model> AddAssetAsync(Asset_Model asset);
+        Task<Asset_Model> CreateAssetAsync(Asset_Model asset);
         Task<bool> UpdateAssetAsync(int asset_id,Asset_Model asset);
         Task<bool> DeleteAssetAsync(int asset_id);
     }
