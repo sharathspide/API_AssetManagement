@@ -8,7 +8,8 @@
         public int AssetId { get; set; }
         public string? Name { get; set; }
         public string? Description { get; set; }
-        public object? EmployeeId { get; set; }
+        public int? EmployeeId { get; set; }
+        public int CompanyId { get; set; }
         public DateTime? CreatedDate { get; set; }
         public Employee? CreatedBy { get; set; }
         public DateTime? UpdatedDate { get; set; }

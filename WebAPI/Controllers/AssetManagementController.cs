@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.BusinessLayer;
 using WebAPI.Model;
@@ -58,6 +59,25 @@ namespace WebAPI.Controllers
             catch(Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, $"Error retrieving data from the database: {ex.Message}");
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<bool>> DeleteAssetAsync(int id)
+        {
+            try
+            {
+                var isDeleted = await _assetService.DeleteAssetAsync(id);
+                if (!isDeleted)
+                {
+                    return NotFound($"No Such asset Found to be Deleted!");
+                }
+                return Ok($"Asset found was deteted successfully");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception occured: {ex.Message}");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Error occured while finding and deleting the asset.");
             }
         }
     }
